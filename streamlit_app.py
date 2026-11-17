@@ -29,6 +29,13 @@ ingredients_list = st.multiselect(
     , max_selections=5
 )
 
+ # New section to display smoothiefroot nutrition information
+    import requests  
+    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")  
+    # st.text(smoothiefroot_response.json())
+    sf_df = st.dataframe(data=smoothiefroot_response.json(), use_containder_with=true)
+
+
 if ingredients_list:
 #    st.write(ingredients_list)
 #    st.text(ingredients_list)
@@ -48,13 +55,7 @@ if ingredients_list:
 #    st.write(my_insert_stmt)
 #    st.stop()
   
-    # New section to display smoothiefroot nutrition information
-    import requests  
-    smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")  
-    # st.text(smoothiefroot_response.json())
-    sf_df = st.dataframe(data=smoothiefroot_response.json(), use_containder_with=true)
-
-  
+    
     time_to_insert = st.button('Submit Order')
 
     if time_to_insert:
